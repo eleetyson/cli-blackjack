@@ -9,7 +9,6 @@ class Blackjack
     @player = []
     @dealer = []
     # self.save
-    binding.pry
   end
 
   # def save
@@ -20,14 +19,24 @@ class Blackjack
   #   @@all
   # end
 
-  # draw a random card (a hash) from the deck and add it to the player's hand
+  # draw a card for the player (pick a random card hash from the @deck array and add it to the player's hand -- @player)
   def player_draw
     self.player << self.deck.sample
   end
 
-  # draw a random card (a hash) from the deck and add it to the dealer's hand
+  # draw a card for the dealer (pick a random card hash from the @deck array and add it to the dealer's hand -- @dealer)
   def dealer_draw
     self.dealer << self.deck.sample
+  end
+
+  # discard the player's hand (empty the @player array)
+  def player_discard
+    self.player.clear
+  end
+
+  # discard the dealer's hand (empty the @dealer array)
+  def dealer_discard
+    self.dealer.clear
   end
 
 end
