@@ -94,11 +94,13 @@ class CLI
 
   end
 
+  # display the user and dealer's hands
   def status
     puts "You: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
     puts "Dealer: #{Blackjack.dealer_hand} --> #{Blackjack.dealer_hand.sum}"
   end
 
+  # if nobody busts or hits 21, check who won
   def evaluate
     puts "------------------------"
     self.status
