@@ -7,6 +7,7 @@ class Blackjack
     self.class.all[:dealer] = []
   end
 
+  # display the player's current hand
   def self.player_hand
     self.all[:player].map do |card|
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
@@ -19,6 +20,7 @@ class Blackjack
     end
   end
 
+  # display the dealer's current hand
   def self.dealer_hand
     self.all[:dealer].map do |card|
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
@@ -31,8 +33,9 @@ class Blackjack
     end
   end
 
+  # display only the dealer's first card (simulates hiding the face down card)
   def self.dealer_show_one
-    # self.all[:dealer]
+    [self.dealer_hand.first]
   end
 
   # draw a card for the player

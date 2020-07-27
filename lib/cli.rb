@@ -13,7 +13,7 @@ class CLI
     input = gets.strip.upcase # standardize and store user's input
 
     if input == "Y" # start the game if user wants to play
-      self.play
+      self.start_game
     elsif input == "N" # allow user to exit
       self.exit
     else
@@ -23,8 +23,12 @@ class CLI
 
   end
 
-  def play
+  def start_game
     API.get_new_deck # in order to play, we need a deck of cards first :)
+    self.deal_hand
+  end
+
+  def deal_hand
     Blackjack.player_draw
     Blackjack.player_draw
     Blackjack.dealer_draw
@@ -32,9 +36,16 @@ class CLI
     puts "------------------------"
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and another card that's face down"
-    puts "Do you want to hit or stand?"
-    binding.pry
+    self.play
+  end
 
+  def play
+    print "Enter 'h' to hit or 's' to stand: "
+    input = gets.strip.upcase
+    binding.pry
+    # until ...
+    # if input == "H"
+    # elsif input == "S"
   end
 
   # end the game
