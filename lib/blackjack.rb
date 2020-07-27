@@ -1,50 +1,29 @@
 class Blackjack
-  # attr_accessor :deck_id, :deck, :player, :dealer
-  attr_reader :deck_id, :deck, :player, :dealer
 
-  @@all = []
-
-  def initialize(deck_id, deck)
-    @deck_id = deck_id
-    @deck = deck
+  def initialize(cards)
+    @cards = cards
     @player = []
     @dealer = []
-    self.save
   end
 
-  # store the current instance in the @@all array
-  def save
-    self.class.all << self
+  # draw a card for the player (pick a random element from the @cards array and add it to the player's hand)
+  def player_draw
+    @player << @cards.sample
   end
 
-  # draw a card for the player (pick a random card hash from the @deck array and add it to the player's hand)
-  def self.player_draw
-    self.all.player << self.deck.sample
+  # draw a card for the dealer (pick a random element from the @cards array and add it to the dealer's hand)
+  def dealer_draw
+    @dealer << @cards.sample
   end
 
-  # draw a card for the dealer (pick a random card hash from the @deck array and add it to the dealer's hand)
-  def self.dealer_draw
-    self.all.dealer << self.deck.sample
+  # discard the player's hand (empty the @player array)
+  def player_discard
+    @player.clear
   end
 
-  # discard the player's hand (empty the player array in @@all)
-  def self.player_discard
-    self.all.player.clear
-  end
-
-  # discard the dealer's hand (empty the dealer array in @@all)
-  def self.dealer_discard
-    self.all.dealer.clear
-  end
-
-  # class method that references the @@all array in a more abstract, flexible way
-  def self.all
-    @@all
-  end
-
-  # empty out the @@all array
-  def self.empty
-    self.all.clear
+  # discard the dealer's hand (empty the @dealer array)
+  def dealer_discard
+    @dealer.clear
   end
 
 end
