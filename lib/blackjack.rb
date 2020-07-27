@@ -7,7 +7,7 @@ class Blackjack
     self.class.all[:dealer] = []
   end
 
-  # display the user's current hand
+  # display the user's current hand as an array
   def self.player_hand
     self.all[:player].map do |card|
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
@@ -20,7 +20,7 @@ class Blackjack
     end
   end
 
-  # display the dealer's current hand
+  # display the dealer's current hand as an array
   def self.dealer_hand
     self.all[:dealer].map do |card|
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
@@ -33,7 +33,7 @@ class Blackjack
     end
   end
 
-  # display only the dealer's first card (simulates hiding the face down card)
+  # display only the dealer's first card (simulates another face down card)
   def self.dealer_show_one
     [self.dealer_hand.first]
   end
@@ -58,6 +58,26 @@ class Blackjack
   def self.dealer_draw_two
     self.dealer_draw
     self.dealer_draw
+  end
+
+  # check whether the player has 21
+  def self.player_blackjack?
+    self.player_hand.sum == 21 ? true : false
+  end
+
+  # check whether the dealer has 21
+  def self.dealer_blackjack?
+    self.dealer_hand.sum == 21 ? true : false
+  end
+
+  # check whether the user's hand is over 21
+  def self.player_over_21?
+    self.player_hand.sum > 21 ? true : false
+  end
+
+  # check whether the dealer's hand is over 21
+  def self.dealer_over_21?
+    self.dealer_hand.sum > 21 ? true : false
   end
 
   # discard the user's hand

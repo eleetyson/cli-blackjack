@@ -35,7 +35,8 @@ class CLI
     puts "------------------------"
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and another card that's face down"
-    self.play
+    # only play out hand if user doesn't have 21 already
+    Blackjack.player_blackjack? ? self.winner_winner : self.play
   end
 
   # give user option to hit or stand
@@ -44,8 +45,41 @@ class CLI
     input = gets.strip.upcase
     binding.pry
     # until ...
-    # if input == "H"
+    if input == "H"
+      self.player_hit
     # elsif input == "S"
+  end
+
+  def player_hit
+    Blackjack.player_draw
+    puts "You drew a #{Blackjack.player_hand.last}"
+    puts "Your cards are now the following: #{Blackjack.player_hand}"
+    puts "The dealer still has: #{Blackjack.dealer_show_one} and another card that's face down"
+
+    if Blackjack.player_over_21?
+      self.player_bust
+    elsif Blackjack.player_blackjack?
+      self.player_winner_winner
+    else
+      self.play
+    end
+
+  end
+
+  def stand
+
+  end
+
+  def player_bust
+    puts "------------------------"
+    puts "The dealer wins this hand. You went over 21 and busted :("
+    # provide choice to run another hand or exit
+  end
+
+  def player_winner_winner
+    puts "------------------------"
+    puts "Winner winner, chicken dinner! You got 21 exactly :)"
+    # provide choice to run another hand or exit
   end
 
   # end the game
