@@ -1,14 +1,13 @@
 class API
-
+  @@deck_id = "9q0rrjv2o7r3"
   # need to send two separate HTTP GET requests
-  # first is to get a deck of cards -- only need one
+  # first is to shuffle our deck of cards
   # second to get all 52 cards from that deck -- ignoring the other information
   # use the response to instantiate a Blackjack instance
   def self.get_new_deck
-    response1 = HTTParty.get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-    deck_id = response1["deck_id"]
-    response2 = HTTParty.get("https://deckofcardsapi.com/api/deck/#{deck_id}/draw/?count=52")
-    cards = response2["cards"]
+    HTTParty.get("https://deckofcardsapi.com/api/deck/#{@@deck_id}/shuffle/")
+    response = HTTParty.get("https://deckofcardsapi.com/api/deck/#{@@deck_id}/draw/?count=52") # returns a hash of data
+    cards = response["cards"] # we only want the "cards" key and its corresponding value
     Blackjack.new(cards)
   end
 
