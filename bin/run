@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../config/environment'
+
+cli = CLI.new
+cli.greeting
+# cli.start_menu
