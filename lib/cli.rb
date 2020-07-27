@@ -25,10 +25,16 @@ class CLI
 
   def play
     API.get_new_deck # in order to play, we need a deck of cards first :)
-    binding.pry
-    # draw two cards each for the player and dealer
+    Blackjack.player_draw
+    Blackjack.player_draw
+    Blackjack.dealer_draw
+    Blackjack.dealer_draw
     puts "------------------------"
-    puts "play functionality"
+    puts "Your cards are the following: #{Blackjack.player_hand}"
+    puts "The dealer has: #{Blackjack.dealer_show_one} and another card that's face down"
+    puts "Do you want to hit or stand?"
+    binding.pry
+
   end
 
   # end the game
