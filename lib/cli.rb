@@ -43,11 +43,16 @@ class CLI
   def play
     print "Enter 'h' to hit or 's' to stand: "
     input = gets.strip.upcase
-    binding.pry
-    # until ...
+
     if input == "H"
       self.player_hit
-    # elsif input == "S"
+    elsif input == "S"
+      self.stand
+    else
+      puts "* please enter either 'h' or 's' *"
+      self.play # this method loops until given a valid input
+    end
+
   end
 
   def player_hit
@@ -67,18 +72,56 @@ class CLI
   end
 
   def stand
+    # per convention, dealer must draw until their cards total 17 or over
+    if Blackjack.dealer_17? # once dealer's cards total 17 or over...
+      if Blackjack.dealer_blackjack? # check for dealer blackjack
+        self.dealer_winner_winner
+      elsif Blackjack.dealer_over_21? # check for dealer bust
+        self.dealer_bust
+      else
+        self.evaluate # if dealer didn't bust or get blackjack, need to check who won
+      end
+    else # otherwise, draw another card and loop this method
+      Blackjack.dealer_draw
+      self.stand
+    end
+  end
 
+  def status
+    puts "You: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
+    puts "Dealer: #{Blackjack.dealer_hand} --> #{Blackjack.dealer_hand.sum}"
+  end
+
+  def evaluate
+    puts "------------------------"
+    self.status
   end
 
   def player_bust
     puts "------------------------"
+    self.status
     puts "The dealer wins this hand. You went over 21 and busted :("
+    # provide choice to run another hand or exit
+  end
+
+  def dealer_bust
+    puts "------------------------"
+    self.status
+    puts "You win this hand. The dealer went over 21 and busted :)"
     # provide choice to run another hand or exit
   end
 
   def player_winner_winner
     puts "------------------------"
+    self.status
     puts "Winner winner, chicken dinner! You got 21 exactly :)"
+    # provide choice to run another hand or exit
+  end
+
+  def dealer_winner_winner
+    puts "------------------------"
+    self.status
+    puts "The dealer got 21 exactly. You lose this hand :("
     # provide choice to run another hand or exit
   end
 

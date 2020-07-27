@@ -80,6 +80,11 @@ class Blackjack
     self.dealer_hand.sum > 21 ? true : false
   end
 
+  # check if the dealer's hand totals 17 or over
+  def self.dealer_17?
+    self.dealer_hand.sum >= 17 ? true : false
+  end
+
   # discard the user's hand
   def self.player_discard
     self.all[:player].clear
