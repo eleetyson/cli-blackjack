@@ -4,4 +4,4 @@ require_relative '../config/environment'
 
 cli = CLI.new
 cli.greeting
-# cli.start_menu
+cli.start_menu
