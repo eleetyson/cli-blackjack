@@ -114,6 +114,7 @@ class CLI
     self.new_hand_or_exit
   end
 
+  # method for when the user goes over 21
   def player_bust
     puts "------------------------"
     self.status
@@ -121,6 +122,7 @@ class CLI
     self.new_hand_or_exit
   end
 
+  # method for when the dealer goes over 21
   def dealer_bust
     puts "------------------------"
     self.status
@@ -128,6 +130,7 @@ class CLI
     self.new_hand_or_exit
   end
 
+  # method for when the player has 21
   def player_winner_winner
     puts "------------------------"
     self.status
@@ -135,6 +138,7 @@ class CLI
     self.new_hand_or_exit
   end
 
+  # method for when the dealer has 21
   def dealer_winner_winner
     puts "------------------------"
     self.status
