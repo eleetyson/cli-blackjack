@@ -85,13 +85,9 @@ class Blackjack
     self.dealer_hand.sum >= 17 ? true : false
   end
 
-  # discard the user's hand
-  def self.player_discard
+  # discard the user and dealer's hands
+  def self.discard
     self.all[:player].clear
-  end
-
-  # discard the dealer's hand
-  def self.dealer_discard
     self.all[:dealer].clear
   end
 
