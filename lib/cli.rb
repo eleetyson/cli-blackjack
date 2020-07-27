@@ -26,6 +26,11 @@ class CLI
 
   def play
     API.get_new_deck # in order to play, we need a deck of cards first :)
+    # draw two cards each for the player and dealer
+    Blackjack.player_draw
+    Blackjack.player_draw
+    Blackjack.dealer_draw
+    Blackjack.dealer_draw
     puts "------------------------"
     puts "play functionality"
   end
