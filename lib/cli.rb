@@ -28,17 +28,17 @@ class CLI
     self.deal_hand
   end
 
+  # draw and display hands for the user and dealer
   def deal_hand
-    Blackjack.player_draw
-    Blackjack.player_draw
-    Blackjack.dealer_draw
-    Blackjack.dealer_draw
+    Blackjack.player_draw_two
+    Blackjack.dealer_draw_two
     puts "------------------------"
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and another card that's face down"
     self.play
   end
 
+  # give user option to hit or stand
   def play
     print "Enter 'h' to hit or 's' to stand: "
     input = gets.strip.upcase

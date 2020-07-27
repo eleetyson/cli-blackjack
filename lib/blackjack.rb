@@ -7,7 +7,7 @@ class Blackjack
     self.class.all[:dealer] = []
   end
 
-  # display the player's current hand
+  # display the user's current hand
   def self.player_hand
     self.all[:player].map do |card|
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
@@ -38,7 +38,7 @@ class Blackjack
     [self.dealer_hand.first]
   end
 
-  # draw a card for the player
+  # draw a card for the user
   def self.player_draw
     self.all[:player] << self.all[:deck].sample
   end
@@ -48,7 +48,19 @@ class Blackjack
     self.all[:dealer] << self.all[:deck].sample
   end
 
-  # discard the player's hand
+  # draw two cards for the user
+  def self.player_draw_two
+    self.player_draw
+    self.player_draw
+  end
+
+  # draw two cards for the dealer
+  def self.dealer_draw_two
+    self.dealer_draw
+    self.dealer_draw
+  end
+
+  # discard the user's hand
   def self.player_discard
     self.all[:player].clear
   end
@@ -58,7 +70,7 @@ class Blackjack
     self.all[:dealer].clear
   end
 
-  # reader for the @@all variable
+  # reader for the @@all array
   def self.all
     @@all
   end
