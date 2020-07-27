@@ -10,6 +10,7 @@ class Blackjack
   # display the user's current hand as an array
   def self.player_hand
     self.all[:player].map do |card|
+
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
         10
       elsif card["value"] == "ACE"
@@ -17,12 +18,14 @@ class Blackjack
       else
         card["value"].to_i
       end
+
     end
   end
 
   # display the dealer's current hand as an array
   def self.dealer_hand
     self.all[:dealer].map do |card|
+
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
         10
       elsif card["value"] == "ACE"
@@ -30,6 +33,7 @@ class Blackjack
       else
         card["value"].to_i
       end
+
     end
   end
 
