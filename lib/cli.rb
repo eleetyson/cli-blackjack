@@ -97,7 +97,7 @@ class CLI
       self.play # this method loops until given a valid input
     end
 
-  end
+  end # #play end
 
   # draw a card for the user and display both hands
   def player_hit
@@ -122,7 +122,7 @@ class CLI
       self.play
     end
 
-  end
+  end # #player_hit end
 
   # per convention after user stands, dealer must draw until hand totals 17 or over
   def stand
@@ -180,8 +180,7 @@ class CLI
       puts "You ran out of money :("
       self.exit
     end
-
-  end
+  end # #evaluate end
 
   # method for when the user goes over 21
   def player_bust
@@ -189,9 +188,18 @@ class CLI
     puts "........................"
     self.status
 
-    puts "The dealer wins this hand. You went over 21 and busted :("
-    self.new_hand_or_exit
-  end
+    puts "The dealer wins this hand. You went over 21 and lose $#{Blackjack.bet} :("
+    Blackjack.subtract_player_winnings(Blackjack.bet)
+
+    # user can only continue if they have money left
+    if Blackjack.money_left?
+      self.new_hand_or_exit
+    else
+      puts ""
+      puts "You ran out of money :("
+      self.exit
+    end
+  end # #player_bust end
 
   # method for when the dealer goes over 21
   def dealer_bust
@@ -199,7 +207,8 @@ class CLI
     puts "........................"
     self.status
 
-    puts "You win this hand. The dealer went over 21 and busted :)"
+    puts "You win this hand and $#{Blackjack.bet}. The dealer went over 21 :)"
+    Blackjack.add_player_winnings(Blackjack.bet)
     self.new_hand_or_exit
   end
 
@@ -209,7 +218,9 @@ class CLI
     puts "........................"
     self.status
 
-    puts "Winner winner, chicken dinner! You got 21 exactly :)"
+    puts "Winner winner, chicken dinner!"
+    puts "You got 21 exactly and win $#{Blackjack.bet}"
+    Blackjack.add_player_winnings(Blackjack.bet)
     self.new_hand_or_exit
   end
 
@@ -219,9 +230,18 @@ class CLI
     puts "........................"
     self.status
 
-    puts "The dealer got 21 exactly. You lose this hand :("
-    self.new_hand_or_exit
-  end
+    puts "The dealer got 21 exactly. You lose this hand and $#{Blackjack.bet} :("
+    Blackjack.subtract_player_winnings(Blackjack.bet)
+
+    # user can only continue if they have money left
+    if Blackjack.money_left?
+      self.new_hand_or_exit
+    else
+      puts ""
+      puts "You ran out of money :("
+      self.exit
+    end
+  end # #dealer_winner_winner end
 
   # give user option to play another hand or quit
   def new_hand_or_exit
@@ -231,14 +251,14 @@ class CLI
     puts "........................"
     puts ""
 
-    # reset
+    # reset both hands and the user's bet
+    Blackjack.discard
     Blackjack.set_bet(0)
     puts "You now have $#{Blackjack.player_winnings}"
     print "Enter 'y' to play another hand or 'n' to exit: "
     input = gets.strip.upcase
 
     if input == "Y" # start another hand if user wants to keep playing
-      Blackjack.discard
       self.deal_hand
     elsif input == "N" # allow user to exit
       self.exit
@@ -248,7 +268,7 @@ class CLI
       self.new_hand_or_exit # loop this method until user makes a valid choice
     end
 
-  end
+  end # #new_hand_or_exit end
 
   # end the game
   def exit
