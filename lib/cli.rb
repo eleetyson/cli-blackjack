@@ -16,6 +16,10 @@ class CLI
     puts "1. Aces will show as 1."
     puts "2. Jacks, Queens, and Kings will show as 10."
     puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
+    puts "4. You'll be given $100 to start the game."
+    puts "5. You must bet every hand."
+    puts "6. A $1 bet is the minimum"
+    puts "7. You can only bet in whole dollar amounts."
     puts ""
     print "Enter 'y' to play or 'n' to exit: "
     input = gets.strip.upcase # standardize and store user's input
@@ -42,6 +46,16 @@ class CLI
   def deal_hand
     sleep(0.5)
 
+    puts "You have #{}"
+    print "How much would you like to bet: "
+    input = gets.strip
+    if input >
+
+    elsif
+      "* please enter  *"
+      self.deal_hand
+    end
+
     Blackjack.player_draw_two
     Blackjack.dealer_draw_two
     puts ""
@@ -52,7 +66,7 @@ class CLI
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and [X]"
     # only play out hand if user doesn't have 21 already
-    Blackjack.player_blackjack? ? self.winner_winner : self.play
+    Blackjack.player_blackjack? ? self.player_winner_winner : self.play
   end
 
   # give user option to hit or stand

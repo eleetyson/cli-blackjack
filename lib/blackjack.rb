@@ -5,12 +5,24 @@ class Blackjack
     self.class.all[:player] = []
     self.class.all[:dealer] = []
     self.class.all[:deck] = cards
+    self.class.all[:player_winnings] = 100
+    self.class.all[:bet] = 0
+  end
+
+  # displays the user's bet for the current hand
+  def self.bet
+    self.all[:bet]
+  end
+
+  # sets user's bet for the current hand
+  def self.set_bet(amount)
+    self.all[:bet] = amount
   end
 
   # display the user's current hand as an array
   def self.player_hand
     self.all[:player].map do |card|
-      
+
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
         10
       elsif card["value"] == "ACE"
@@ -93,6 +105,16 @@ class Blackjack
   def self.discard
     self.all[:player].clear
     self.all[:dealer].clear
+  end
+
+  # resets the player's bet for their next hand
+  def self.bet_reset
+    self.all[:bet] = 0
+  end
+
+  def self.adjust_player_winnings(amount)
+    self.all[:player_winnings] += amount if amount > 0
+    self.all[:player_winnings] -= amount if amount < 0
   end
 
   # reader for the @@all array
