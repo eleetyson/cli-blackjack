@@ -6,7 +6,6 @@ class CLI
     puts "Welcome to CLI Blackjack"
     puts "************************"
     sleep(0.5)
-
     puts ""
     puts "Rules:"
     puts "1. Aces will show as 1."
@@ -22,7 +21,6 @@ class CLI
   # give user option to play or exit the game
   def start_menu
     sleep(0.5)
-
     print "Enter 'y' to play or 'n' to exit: "
     input = gets.strip.upcase # standardize and store user's input
 
@@ -30,7 +28,7 @@ class CLI
     if input == "Y" # start the game if user wants to play
       self.start_game
     elsif input == "N" # allow user to exit
-      self.exit
+      self.quit_game
     else
       sleep(0.5)
       puts "* please enter either 'y' or 'n' *"
@@ -47,7 +45,6 @@ class CLI
   # draw and display hands for the user and dealer
   def deal_hand
     sleep(0.5)
-
     puts ""
     puts "You have $#{Blackjack.player_winnings}."
     print "Please enter your bet for this hand: "
@@ -71,8 +68,8 @@ class CLI
     Blackjack.dealer_draw_two
     puts ""
     puts "........................"
-    sleep(0.5)
 
+    sleep(0.5)
     puts ""
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and [X]"
@@ -83,7 +80,6 @@ class CLI
   # give user option to hit or stand
   def play
     sleep(0.5)
-
     print "Enter 'h' to hit or 's' to stand: "
     input = gets.strip.upcase
 
@@ -92,22 +88,18 @@ class CLI
     elsif input == "S"
       self.stand
     else
-      sleep(0.5)
       puts "* please enter either 'h' or 's' *"
       self.play # this method loops until given a valid input
     end
 
-  end # #play end
+  end
 
   # draw a card for the user and display both hands
   def player_hit
-    sleep(0.5)
-
     Blackjack.player_draw
+    sleep(0.5)
     puts ""
     puts "........................"
-    sleep(0.5)
-
     puts ""
     puts "You drew a #{Blackjack.player_hand.last}"
     puts "Your cards are now the following: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
@@ -121,7 +113,6 @@ class CLI
     else
       self.play
     end
-
   end # #player_hit end
 
   # per convention after user stands, dealer must draw until hand totals 17 or over
@@ -145,7 +136,6 @@ class CLI
   # display the user and dealer's hands
   def status
     sleep(0.5)
-
     puts ""
     puts "You: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
     puts "Dealer: #{Blackjack.dealer_hand} --> #{Blackjack.dealer_hand.sum}"
@@ -153,6 +143,7 @@ class CLI
 
   # if nobody busts or hits 21, check who won
   def evaluate
+    sleep(0.5)
     puts ""
     puts "........................"
     self.status
@@ -171,41 +162,39 @@ class CLI
       puts "This hand is a push :|"
     end
 
-    # user can only continue if they have money left
-    if Blackjack.money_left?
+    if Blackjack.money_left? # user can only continue if they have money left
       self.new_hand_or_exit
     else
       puts ""
       puts "You ran out of money :("
-      self.exit
+      self.quit_game
     end
   end # #evaluate end
 
   # method for when the user goes over 21
   def player_bust
+    sleep(0.5)
     puts ""
     puts "........................"
     self.status
-
     puts "The dealer wins this hand. You went over 21 and lose $#{Blackjack.bet} :("
     Blackjack.subtract_player_winnings(Blackjack.bet)
 
-    # user can only continue if they have money left
-    if Blackjack.money_left?
+    if Blackjack.money_left? # user can only continue if they have money left
       self.new_hand_or_exit
     else
       puts ""
       puts "You ran out of money :("
-      self.exit
+      self.quit_game
     end
   end # #player_bust end
 
   # method for when the dealer goes over 21
   def dealer_bust
+    sleep(0.5)
     puts ""
     puts "........................"
     self.status
-
     puts "You win this hand and $#{Blackjack.bet}. The dealer went over 21 :)"
     Blackjack.add_player_winnings(Blackjack.bet)
     self.new_hand_or_exit
@@ -213,6 +202,7 @@ class CLI
 
   # method for when the player has 21
   def player_winner_winner
+    sleep(0.5)
     puts ""
     puts "........................"
     self.status
@@ -225,27 +215,25 @@ class CLI
 
   # method for when the dealer has 21
   def dealer_winner_winner
+    sleep(0.5)
     puts ""
     puts "........................"
     self.status
 
     puts "The dealer got 21 exactly. You lose this hand and $#{Blackjack.bet} :("
     Blackjack.subtract_player_winnings(Blackjack.bet)
-
-    # user can only continue if they have money left
-    if Blackjack.money_left?
+    if Blackjack.money_left? # user can only continue if they have money left
       self.new_hand_or_exit
     else
       puts ""
       puts "You ran out of money :("
-      self.exit
+      self.quit_game
     end
   end # #dealer_winner_winner end
 
   # give user option to play another hand or quit
   def new_hand_or_exit
     sleep(0.5)
-
     puts ""
     puts "........................"
     puts ""
@@ -260,24 +248,22 @@ class CLI
     if input == "Y" # start another hand if user wants to keep playing
       self.deal_hand
     elsif input == "N" # allow user to exit
-      self.exit
+      self.quit_game
     else
-      sleep(0.5)
       puts "* please enter either 'y' or 'n' *"
       self.new_hand_or_exit # loop this method until user makes a valid choice
     end
-
   end # #new_hand_or_exit end
 
   # end the game
-  def exit
+  def quit_game
     sleep(0.5)
-
     puts ""
     puts "........................"
     puts ""
     puts "Thanks for playing!"
-    return ""
+    puts ""
+    exit! # want to terminate the app any time #quit_game is invoked
   end
 
 end
