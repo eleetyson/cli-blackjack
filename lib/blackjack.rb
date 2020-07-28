@@ -9,19 +9,14 @@ class Blackjack
     self.class.all[:bet] = 0
   end
 
-  # displays the user's bet for the current hand
-  def self.bet
-    self.all[:bet]
-  end
-
   # sets user's bet for the current hand
   def self.set_bet(amount)
     self.all[:bet] = amount
   end
 
-  # displays the user's winnings
-  def self.player_winnings
-    self.all[:player_winnings]
+  # displays the user's bet for the current hand
+  def self.bet
+    self.all[:bet]
   end
 
   # display the user's current hand as an array
@@ -112,14 +107,24 @@ class Blackjack
     self.all[:dealer].clear
   end
 
-  # resets the player's bet for their next hand
-  def self.bet_reset
-    self.all[:bet] = 0
+  # displays the user's winnings
+  def self.player_winnings
+    self.all[:player_winnings]
   end
 
-  def self.adjust_player_winnings(amount)
-    self.all[:player_winnings] += amount if amount > 0
-    self.all[:player_winnings] -= amount if amount < 0
+  # returns whether the user has any money left
+  def self.money_left?
+    self.player_winnings > 0
+  end
+
+  # adds to the player's winnings by amount
+  def self.add_player_winnings(amount)
+    self.all[:player_winnings] += amount
+  end
+
+  # subtracts from the player's winnings by amount
+  def self.subtract_player_winnings(amount)
+    self.all[:player_winnings] -= amount
   end
 
   # reader for the @@all array

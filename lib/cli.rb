@@ -17,7 +17,7 @@ class CLI
     puts "6. Your bet cannot exceed what you currently have."
     puts "7. You can bet $1, $5, $10, $25, $50, or $100."
     puts ""
-  end
+  end # #greeting end
 
   # give user option to play or exit the game
   def start_menu
@@ -36,7 +36,7 @@ class CLI
       self.start_menu # loop this method until user makes a valid choice
     end
 
-  end
+  end # #start_menu end
 
   # get a deck of cards and then deal a hand
   def start_game
@@ -78,7 +78,7 @@ class CLI
     puts "The dealer has: #{Blackjack.dealer_show_one} and [X]"
     # only play out hand if user doesn't have 21 already
     Blackjack.player_blackjack? ? self.player_winner_winner : self.play
-  end
+  end # #deal_hand end
 
   # give user option to hit or stand
   def play
@@ -141,7 +141,7 @@ class CLI
       self.stand
     end
 
-  end
+  end # #stand end
 
   # display the user and dealer's hands
   def status
@@ -158,18 +158,29 @@ class CLI
     puts "........................"
     self.status
 
+    # adjust totals
     if Blackjack.player_hand.sum > Blackjack.dealer_hand.sum
       sleep(0.5)
-      puts "You win this hand :)"
+      puts "You win this hand and $#{Blackjack.bet} :)"
+      Blackjack.add_player_winnings(Blackjack.bet)
     elsif Blackjack.player_hand.sum < Blackjack.dealer_hand.sum
       sleep(0.5)
-      puts "The dealer wins this hand :("
+      puts "The dealer wins this hand and you lose $#{Blackjack.bet} :("
+      Blackjack.subtract_player_winnings(Blackjack.bet)
     else
       sleep(0.5)
       puts "This hand is a push :|"
     end
 
-    self.new_hand_or_exit
+    # user can only continue if they have money left
+    if Blackjack.money_left?
+      self.new_hand_or_exit
+    else
+      puts ""
+      puts "You ran out of money :("
+      self.exit
+    end
+
   end
 
   # method for when the user goes over 21
@@ -219,6 +230,10 @@ class CLI
     puts ""
     puts "........................"
     puts ""
+
+    # reset
+    Blackjack.set_bet(0)
+    puts "You now have $#{Blackjack.player_winnings}"
     print "Enter 'y' to play another hand or 'n' to exit: "
     input = gets.strip.upcase
 
