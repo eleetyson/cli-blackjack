@@ -52,6 +52,15 @@ class CLI
     puts "You have $#{Blackjack.player_winnings}."
     print "Please enter your bet for this hand: "
     input = gets.strip
+
+    begin
+      input.to_i
+    rescue
+      puts "** please enter an integer without special characters **"
+      self.deal_hand
+    end
+
+    binding.pry
     if input > Blackjack.player_winnings # input can't exceed amount user has
       "* you don't have enough to bet that much! *"
       self.deal_hand
