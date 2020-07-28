@@ -14,8 +14,8 @@ class CLI
     puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
     puts "4. You'll be given $100 to start the game."
     puts "5. You must bet every hand."
-    puts "6. A $1 bet is the minimum."
-    puts "7. You can only bet in whole dollar amounts."
+    puts "6. Your bet cannot exceed what you currently have."
+    puts "7. You can bet $1, $5, $10, $25, $50, or $100."
     puts ""
   end
 
@@ -53,22 +53,24 @@ class CLI
     print "Please enter your bet for this hand: "
     input = gets.strip
 
+
+
     begin
-      input.to_i
+
     rescue
-      puts "** please enter an integer without special characters **"
-      self.deal_hand
+      
     end
 
-    binding.pry
-    if input > Blackjack.player_winnings # input can't exceed amount user has
+    if input.is_a?(Float) # input must be a whole dollar amount
+      "* you need to bet a whole dollar amount *"
+    elsif input.to_i == 0 || input.to_i == nil # input must be greater than 0
+      "* you need to bet something *"
+      self.deal_hand
+    elsif input > Blackjack.player_winnings # input can't exceed amount user has
       "* you don't have enough to bet that much! *"
       self.deal_hand
-    elsif input.to_i.is_a?(Integer) # only set their bet if given valid input
+    else  # only set their bet if given valid input
       Blackjack.set_bet(input.to_i)
-    else # otherwise, this method loops until given valud input
-      "* please enter an integer without special characters *"
-      self.deal_hand
     end
 
     Blackjack.player_draw_two
