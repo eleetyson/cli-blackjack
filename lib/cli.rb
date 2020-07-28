@@ -5,22 +5,24 @@ class CLI
     puts "************************"
     puts "Welcome to CLI Blackjack"
     puts "************************"
+    sleep(0.5)
+
+    puts ""
+    puts "Rules:"
+    puts "1. Aces will show as 1."
+    puts "2. Jacks, Queens, and Kings will show as 10."
+    puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
+    puts "4. You'll be given $100 to start the game."
+    puts "5. You must bet every hand."
+    puts "6. A $1 bet is the minimum."
+    puts "7. You can only bet in whole dollar amounts."
+    puts ""
   end
 
   # give user option to play or exit the game
   def start_menu
     sleep(0.5)
 
-    puts ""
-    puts "Quick notes:"
-    puts "1. Aces will show as 1."
-    puts "2. Jacks, Queens, and Kings will show as 10."
-    puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
-    puts "4. You'll be given $100 to start the game."
-    puts "5. You must bet every hand."
-    puts "6. A $1 bet is the minimum"
-    puts "7. You can only bet in whole dollar amounts."
-    puts ""
     print "Enter 'y' to play or 'n' to exit: "
     input = gets.strip.upcase # standardize and store user's input
 
@@ -46,13 +48,17 @@ class CLI
   def deal_hand
     sleep(0.5)
 
-    puts "You have #{}"
-    print "How much would you like to bet: "
+    puts ""
+    puts "You have $#{Blackjack.player_winnings}."
+    print "Please enter your bet for this hand: "
     input = gets.strip
-    if input >
-
-    elsif
-      "* please enter  *"
+    if input > Blackjack.player_winnings # input can't exceed amount user has
+      "* you don't have enough to bet that much! *"
+      self.deal_hand
+    elsif input.to_i.is_a?(Integer) # only set their bet if given valid input
+      Blackjack.set_bet(input.to_i)
+    else # otherwise, this method loops until given valud input
+      "* please enter an integer without special characters *"
       self.deal_hand
     end
 

@@ -19,6 +19,11 @@ class Blackjack
     self.all[:bet] = amount
   end
 
+  # displays the user's winnings
+  def self.player_winnings
+    self.all[:player_winnings]
+  end
+
   # display the user's current hand as an array
   def self.player_hand
     self.all[:player].map do |card|
