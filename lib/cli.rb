@@ -53,21 +53,15 @@ class CLI
     print "Please enter your bet for this hand: "
     input = gets.strip
 
-
-
-    begin
-
-    rescue
-      
-    end
-
-    if input.is_a?(Float) # input must be a whole dollar amount
-      "* you need to bet a whole dollar amount *"
-    elsif input.to_i == 0 || input.to_i == nil # input must be greater than 0
-      "* you need to bet something *"
+    # loop #deal_hand until given valid user input
+    if input.match?(/\D/) # input must omit non-digit characters
+      puts "* please enter an integer -- omit dollar signs and special characters*"
       self.deal_hand
-    elsif input > Blackjack.player_winnings # input can't exceed amount user has
-      "* you don't have enough to bet that much! *"
+    elsif input.to_i == 0 || input.to_i == nil # input must be greater than 0
+      puts "* please enter a integer greater than 0, omitting special characters *"
+      self.deal_hand
+    elsif input.to_i > Blackjack.player_winnings # input can't exceed amount user has
+      puts "* you don't have enough to bet that much! *"
       self.deal_hand
     else  # only set their bet if given valid input
       Blackjack.set_bet(input.to_i)
