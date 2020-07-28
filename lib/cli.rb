@@ -38,9 +38,11 @@ class CLI
 
     Blackjack.player_draw_two
     Blackjack.dealer_draw_two
-    puts "------------------------"
+    puts ""
+    puts "........................"
     sleep(0.5)
 
+    puts ""
     puts "Your cards are the following: #{Blackjack.player_hand}"
     puts "The dealer has: #{Blackjack.dealer_show_one} and [X]"
     # only play out hand if user doesn't have 21 already
@@ -71,9 +73,11 @@ class CLI
     sleep(0.5)
 
     Blackjack.player_draw
-    puts "------------------------"
+    puts ""
+    puts "........................"
     sleep(0.5)
 
+    puts ""
     puts "You drew a #{Blackjack.player_hand.last}"
     puts "Your cards are now the following: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
     puts "The dealer still has: #{Blackjack.dealer_show_one} and [X]"
@@ -112,13 +116,15 @@ class CLI
   def status
     sleep(0.5)
 
+    puts ""
     puts "You: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
     puts "Dealer: #{Blackjack.dealer_hand} --> #{Blackjack.dealer_hand.sum}"
   end
 
   # if nobody busts or hits 21, check who won
   def evaluate
-    puts "------------------------"
+    puts ""
+    puts "........................"
     self.status
 
     if Blackjack.player_hand.sum > Blackjack.dealer_hand.sum
@@ -137,7 +143,8 @@ class CLI
 
   # method for when the user goes over 21
   def player_bust
-    puts "------------------------"
+    puts ""
+    puts "........................"
     self.status
 
     puts "The dealer wins this hand. You went over 21 and busted :("
@@ -146,7 +153,8 @@ class CLI
 
   # method for when the dealer goes over 21
   def dealer_bust
-    puts "------------------------"
+    puts ""
+    puts "........................"
     self.status
 
     puts "You win this hand. The dealer went over 21 and busted :)"
@@ -155,7 +163,8 @@ class CLI
 
   # method for when the player has 21
   def player_winner_winner
-    puts "------------------------"
+    puts ""
+    puts "........................"
     self.status
 
     puts "Winner winner, chicken dinner! You got 21 exactly :)"
@@ -164,7 +173,8 @@ class CLI
 
   # method for when the dealer has 21
   def dealer_winner_winner
-    puts "------------------------"
+    puts ""
+    puts "........................"
     self.status
 
     puts "The dealer got 21 exactly. You lose this hand :("
@@ -175,7 +185,9 @@ class CLI
   def new_hand_or_exit
     sleep(0.5)
 
-    puts "------------------------"
+    puts ""
+    puts "........................"
+    puts ""
     print "Enter 'y' to play another hand or 'n' to exit: "
     input = gets.strip.upcase
 
@@ -196,8 +208,11 @@ class CLI
   def exit
     sleep(0.5)
 
-    puts "------------------------"
+    puts ""
+    puts "........................"
+    puts ""
     puts "Thanks for playing!"
+    puts ""
   end
 
 end
