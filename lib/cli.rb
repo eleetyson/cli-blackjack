@@ -17,7 +17,7 @@ class CLI
     puts "6. Your bet must be a whole dollar amount."
     puts "7. Your bet cannot exceed what you currently have."
     puts ""
-  end # #greeting end
+  end
 
   # give user option to play or exit the game
   def start_menu
@@ -26,6 +26,7 @@ class CLI
     print "Enter 'y' to play or 'n' to exit: "
     input = gets.strip.upcase # standardize and store user's input
 
+    # loop until user makes a valid choice
     if input == "Y" # start the game if user wants to play
       self.start_game
     elsif input == "N" # allow user to exit
@@ -33,10 +34,9 @@ class CLI
     else
       sleep(0.5)
       puts "* please enter either 'y' or 'n' *"
-      self.start_menu # loop this method until user makes a valid choice
+      self.start_menu
     end
-
-  end # #start_menu end
+  end
 
   # get a deck of cards and then deal a hand
   def start_game
@@ -54,11 +54,11 @@ class CLI
     input = gets.strip
 
     # loop #deal_hand until given valid user input
-    if input.match?(/\D/) # input must omit non-digit characters
-      puts "* please enter an integer -- omit dollar signs and special characters*"
+    if input.match?(/\D/)
+      puts "* please enter an integer, omitting non-digit characters *"
       self.deal_hand
     elsif input.to_i == 0 || input.to_i == nil # input must be greater than 0
-      puts "* please enter a integer greater than 0, omitting special characters *"
+      puts "* please enter a integer greater than 0, omitting non-digit characters *"
       self.deal_hand
     elsif input.to_i > Blackjack.player_winnings # input can't exceed amount user has
       puts "* you don't have enough to bet that much! *"
@@ -140,7 +140,6 @@ class CLI
       Blackjack.dealer_draw
       self.stand
     end
-
   end # #stand end
 
   # display the user and dealer's hands
@@ -278,7 +277,7 @@ class CLI
     puts "........................"
     puts ""
     puts "Thanks for playing!"
-    puts ""
+    return ""
   end
 
 end

@@ -78,27 +78,27 @@ class Blackjack
 
   # check whether the player has 21
   def self.player_blackjack?
-    self.player_hand.sum == 21 ? true : false
+    self.player_hand.sum == 21
   end
 
   # check whether the dealer has 21
   def self.dealer_blackjack?
-    self.dealer_hand.sum == 21 ? true : false
+    self.dealer_hand.sum == 21
   end
 
   # check whether the user's hand is over 21
   def self.player_over_21?
-    self.player_hand.sum > 21 ? true : false
+    self.player_hand.sum > 21
   end
 
   # check whether the dealer's hand is over 21
   def self.dealer_over_21?
-    self.dealer_hand.sum > 21 ? true : false
+    self.dealer_hand.sum > 21
   end
 
   # check if the dealer's hand totals 17 or over
   def self.dealer_17?
-    self.dealer_hand.sum >= 17 ? true : false
+    self.dealer_hand.sum >= 17
   end
 
   # discard the user and dealer's hands
