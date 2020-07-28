@@ -11,6 +11,10 @@ class CLI
   def start_menu
     sleep(0.5)
 
+    puts "Quick notes:"
+    puts "1. Aces will show as 1."
+    puts "2. Jacks, Queens, and Kings will show as 10."
+    puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
     print "Enter 'y' to play or 'n' to exit: "
     input = gets.strip.upcase # standardize and store user's input
 

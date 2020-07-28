@@ -5,32 +5,12 @@ class Blackjack
     self.class.all[:player] = []
     self.class.all[:dealer] = []
     self.class.all[:deck] = cards
-    self.class.convert_face_cards
-  end
-
-  # re-map values for all face cards
-  def self.convert_face_cards
-    self.all[:deck].map! do |card|
-
-      if card["value"] == "KING"
-        card["value"] = "K"
-      elsif card["value"] == "QUEEN"
-        card["value"] = "Q"
-      elsif card["value"] == "JACK"
-        card["value"] = "J"
-      elsif card["value"] == "ACE"
-        card["value"] = "A"
-      else
-        card["value"]
-      end
-    end
-
   end
 
   # display the user's current hand as an array
   def self.player_hand
     self.all[:player].map do |card|
-
+      
       if card["value"] == "KING" || card["value"] == "QUEEN" || card["value"] == "JACK"
         10
       elsif card["value"] == "ACE"
