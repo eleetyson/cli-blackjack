@@ -14,8 +14,8 @@ class CLI
     puts "3. If you stand, the dealer must draw until their hand totals 17 or over."
     puts "4. You'll be given $100 to start the game."
     puts "5. You must bet every hand."
-    puts "6. Your bet cannot exceed what you currently have."
-    puts "7. You can bet $1, $5, $10, $25, $50, or $100."
+    puts "6. Your bet must be a whole dollar amount."
+    puts "7. Your bet cannot exceed what you currently have."
     puts ""
   end # #greeting end
 
