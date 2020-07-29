@@ -14,4 +14,4 @@ gem install pry
 gem install httparty
 ```
 
-![Image of Demo](https://github.com/eleetyson/cli-blackjack/blob/master/demo.png)
+![Image of Demo](./demo.png)
