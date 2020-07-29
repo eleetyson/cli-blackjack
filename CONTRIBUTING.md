@@ -2,7 +2,8 @@
 When contributing to this repository, please adhere to the code of conduct below.
 
 Here's the simplest way to contribute:
-1.
+1. Fork [this repo](https://github.com/eleetyson/cli-blackjack) and create a clone of your fork (meaning, make a copy of these files that you can edit on your computer -- [Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains the process much better than I can!)
+2. 
 ### Contributor Covenant Code of Conduct
 #### Our Pledge
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
