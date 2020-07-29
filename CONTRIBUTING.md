@@ -14,9 +14,14 @@ gem install pry
 gem install httparty
 ```
 3. Navigate to your newly cloned directory
-4. Create a new branch for your change / addition
-'git checkout -b <topic-branch-name>'
-5. 
+4. Create a new branch for your changes / additions
+`git checkout -b <topic-branch-name>`
+5. Stage and commit your changes locally
+```
+git add .
+git commit -m "succinct description goes here"
+```
+6. Open a pull request [here](https://github.com/eleetyson/cli-blackjack/pulls) (again, Github's [documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) on how to do this is great)
 ### Contributor Covenant Code of Conduct
 #### Our Pledge
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
