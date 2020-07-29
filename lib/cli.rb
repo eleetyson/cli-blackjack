@@ -100,7 +100,7 @@ class CLI
     Blackjack.player_draw
     sleep(0.5)
     puts ""
-    puts "........................"
+    puts "......................"
     puts ""
     puts "You drew a #{Blackjack.player_hand.last}"
     puts "Your cards are now the following: #{Blackjack.player_hand} --> #{Blackjack.player_hand.sum}"
