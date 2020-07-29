@@ -9,5 +9,5 @@ class API
     cards = response["cards"] # we only want the "cards" key and its corresponding value from that hash
     Blackjack.new(cards) #instantiate a new Blackjack instance
   end
-
+# testing
 end
