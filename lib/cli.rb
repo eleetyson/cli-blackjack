@@ -2,6 +2,7 @@ class CLI
 
   # greet the user
   def greeting
+    puts ""
     puts "************************"
     puts "Welcome to CLI Blackjack"
     puts "************************"
@@ -263,7 +264,7 @@ class CLI
     puts ""
     puts "Thanks for playing!"
     puts ""
-    exit! # want to terminate the app any time #quit_game is invoked
+    exit! # terminate the app any time #quit_game is invoked
   end
 
 end
