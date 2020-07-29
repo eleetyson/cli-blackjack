@@ -15,8 +15,8 @@ gem list -i "^insert_gem_name$"
 gem install pry
 gem install httparty
 ```
-3. Navigate to the newly created `<cli-blackjack>` directory
-4. Run `<ruby bin/run>`
+3. Navigate to the newly created `cli-blackjack` directory
+4. Run `ruby bin/run`
 5. Good luck!
 
 ![Image of Demo](./demo.png)
