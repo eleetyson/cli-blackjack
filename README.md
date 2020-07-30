@@ -8,6 +8,7 @@ To play, follow the steps below:
 ```
 git clone "copied_HTTPS_or_SSH_link_from_Github"
 ```
+# After forking the repository on Github, clone it locally 
 2. Ensure you have Ruby and these two gems, "pry" and "httparty", installed on your computer
 ```
 # Check all gems you have installed
