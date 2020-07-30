@@ -6,9 +6,9 @@ It's built entirely with Ruby and uses this [Deck of Cards API](https://deckofca
 To play, follow the steps below:
 1. Fork [this repository](https://github.com/eleetyson/cli-blackjack) and create a clone of your fork (meaning, make a copy of these files and download to your computer -- [Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains this process well)
 ```
+# After forking the repository on Github, clone it locally 
 git clone "copied_HTTPS_or_SSH_link_from_Github"
 ```
-# After forking the repository on Github, clone it locally 
 2. Ensure you have Ruby and these two gems, "pry" and "httparty", installed on your computer
 ```
 # Check all gems you have installed
