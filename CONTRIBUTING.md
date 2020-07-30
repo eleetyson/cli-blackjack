@@ -2,7 +2,7 @@
 When contributing to this repository, please adhere to the code of conduct below.
 
 Here's the simplest way to contribute:
-1. Fork [this repo](https://github.com/eleetyson/cli-blackjack) and create a clone of your fork (meaning, make a copy of these files that you can edit on your computer -- [Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains the process much better than I can!)
+1. Fork and then clone [this repo](https://github.com/eleetyson/cli-blackjack) ([Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains the process much better than I can!)
 2. Ensure you have Ruby and these two gems, "pry" and "httparty", installed on your computer
 ```
 # Check all gems you have installed

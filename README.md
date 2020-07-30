@@ -4,9 +4,8 @@ This is a CLI app that allows a user to play Blackjack from the command line, us
 It's built entirely with Ruby and uses this [Deck of Cards API](https://deckofcardsapi.com/).
 
 To play, follow the steps below:
-1. Fork [this repository](https://github.com/eleetyson/cli-blackjack) and clone your fork ([Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains this process well)
+1. Clone [this repository](https://github.com/eleetyson/cli-blackjack)
 ```
-# After forking the repository on Github, clone it locally
 git clone "copied_HTTPS_or_SSH_link_from_Github"
 ```
 2. Ensure you have Ruby and these two gems, "pry" and "httparty", installed on your computer
