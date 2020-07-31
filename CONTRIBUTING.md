@@ -2,7 +2,7 @@
 When contributing to this repository, please adhere to the code of conduct below.
 
 Here's the simplest way to contribute:
-1. Fork and then clone [this repo](https://github.com/eleetyson/cli-blackjack) ([Github's guide](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#propose-changes-to-someone-elses-project) explains the process much better than I can!)
+1. Fork and then clone [this repo](https://github.com/eleetyson/cli-blackjack)
 2. Ensure you have Ruby and these two gems, "pry" and "httparty", installed on your computer
 ```
 # Check all gems you have installed
@@ -21,7 +21,7 @@ gem install httparty
 git add .
 git commit -m "succinct description goes here"
 ```
-6. Open a pull request [here](https://github.com/eleetyson/cli-blackjack/pulls) (again, Github's [documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) on how to do this is great)
+6. Open a pull request
 ### Contributor Covenant Code of Conduct
 #### Our Pledge
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
