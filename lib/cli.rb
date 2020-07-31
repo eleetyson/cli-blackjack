@@ -153,7 +153,6 @@ class CLI
     if Blackjack.all.first.player_hand.sum > Blackjack.all.first.dealer_hand.sum
       sleep(0.5)
       puts "You win this hand and $#{Blackjack.all.first.bet} :)"
-      binding.pry
       Blackjack.all.first.add_player_winnings(Blackjack.all.first.bet)
     elsif Blackjack.all.first.player_hand.sum < Blackjack.all.first.dealer_hand.sum
       sleep(0.5)
