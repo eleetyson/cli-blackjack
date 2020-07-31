@@ -22,4 +22,4 @@ gem install httparty
 4. Run `ruby bin/run`
 5. Good luck!
 
-![Image of Demo](./demo.png)
+![Demo](./demo.gif)
