@@ -17,6 +17,7 @@ class CLI
     puts "6. Your bet must be a whole dollar amount."
     puts "7. Your bet cannot exceed what you currently have."
     puts ""
+    self.start_menu
   end
 
   # give user option to play or exit the game
@@ -39,7 +40,7 @@ class CLI
 
   # get a deck of cards and then deal a hand
   def start_game
-    API.get_new_deck
+    API.new.get_new_deck
     self.deal_hand
   end
 
@@ -163,12 +164,12 @@ class CLI
       puts "This hand is a push :|"
     end
 
-    if Blackjack.all.first.money_left? # user can only continue if they have money left
-      self.new_hand_or_exit
-    else
+    if !Blackjack.all.first.money_left? # user can only continue if they have money left
       puts ""
       puts "You ran out of money :("
       self.quit_game
+    else
+      self.new_hand_or_exit
     end
   end # #evaluate end
 
