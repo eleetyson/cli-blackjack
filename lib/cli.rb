@@ -210,8 +210,8 @@ class CLI
     self.status
 
     puts "Winner winner, chicken dinner!"
-    puts "You got 21 exactly and win $#{Blackjack.all.first.bet}"
-    Blackjack.all.first.add_player_winnings(Blackjack.all.first.bet)
+    puts "You got 21 exactly and win $#{Blackjack.all.first.bet} (2x your wager)"
+    Blackjack.all.first.add_player_winnings(Blackjack.all.first.bet * 2)
     self.new_hand_or_exit
   end
 
